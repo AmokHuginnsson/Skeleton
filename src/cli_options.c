@@ -55,7 +55,7 @@ does very much usefull things ... really \n", g_pcProgramName );
 int decode_switches ( int a_iArgc, char ** a_ppcArgv )
 	{
 	int l_c;
-	log << "Decoding switches ... ";
+	core::log << "Decoding switches ... ";
 	while ( ( l_c = getopt_long ( a_iArgc, a_ppcArgv, 
 					"q"	   /* quiet or silent                                       */
 					"v"	   /* verbose                                               */
@@ -91,6 +91,7 @@ int decode_switches ( int a_iArgc, char ** a_ppcArgv )
 				}
 			}
 		}
-	log << "done" << endl;
+	core::log << "done" << endl;
 	return ( optind );
 	}
+

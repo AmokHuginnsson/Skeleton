@@ -44,7 +44,7 @@ int main ( int /*a_iArgc*/, char /** a_ppcArgv [ ]*/ )
 /**		g_pcProgramName = a_ppcArgv [ 0 ];                                  **/
 /**		process_prjrc_file ( );                                             **/
 /**		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );                    **/
-/**		log.rehash ( g_pcLogFileName, g_pcProgramName );                    **/
+/**		core::log.rehash ( g_pcLogFileName, g_pcProgramName );                    **/
 /**		if ( ! console::is_enabled ( ) )console::enter_curses (); **//* enabling ncurses ablilities*/
 /* *BOOM* */
 /**		if ( console::is_enabled ( ) )console::leave_curses ();  **//* ending ncurses sesion    */
