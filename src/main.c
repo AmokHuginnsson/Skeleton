@@ -53,7 +53,7 @@ int main ( int /*a_iArgc*/, char /** a_ppcArgv [ ]*/ )
 /**	catch ( HException * e )                                              **/
 /**		{                                                                   **/
 /**		e->log ( __WHERE__ );                                               **/
-/**		if ( console::is_enabled ( ) )console::leave_curses (); // ending ncurses sesion */
+/**		if ( console::is_enabled ( ) )console::leave_curses (); **//* ending ncurses sesion */
 /**		e->print_error ( true );                                            **/
 /**		delete e;                                                           **/
 /**		}                                                                   **/
