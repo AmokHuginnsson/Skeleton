@@ -27,4 +27,5 @@ Copyright:
 #ifndef __TEMPLATE_H
 #define __TEMPLATE_H
 
-#endif /* __TEMPLATE_H */
+#endif /* not __TEMPLATE_H */
+
