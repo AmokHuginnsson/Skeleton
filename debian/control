@@ -1,0 +1,11 @@
+Source: prj
+Section: non-free:net
+Priority: optional
+Maintainer: Amok Berserker <amok@utgardian.utgard.org>
+Standards-Version: 3.1.1
+
+Package: prj
+Architecture: i386
+Depends: ${shlibs:Depends}
+Description: prj - absolutelly nesslesscary tool.
+ prj - does very much of very many different usefull things ... really.
