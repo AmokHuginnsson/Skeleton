@@ -1,5 +1,5 @@
 /*
----         `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski           ---
+---       `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski         ---
 
 	rc_options.c - this file is integral part of `prj' project.
 
@@ -29,32 +29,27 @@ Copyright:
 #include <stdio.h>
 
 #include <stdhapi.h>
+M_CVSID ( "$CVSHeader$" );
 
 #include "variables.h"
 
-int process_rc_file ( void )
+OVariable g_psVars [ ] =
 	{
-	FILE * l_psRc = 0;
-	HString l_oOption, l_oValue;
-	const char l_pcRcName [ ] = "prj";
-	log << "process_rc_file ( ): ";
-	l_psRc = rc_open ( l_pcRcName, false );
-	if ( l_psRc )while ( read_rc_line ( l_oOption, l_oValue, l_psRc ) )
-		{
-		if ( ! strcasecmp ( l_oOption, "logfile" ) )
-			g_pcLogFileName = xstrdup ( l_oValue );
-		printf ( "option: [%s], value: [%s]\n", ( char * ) l_oOption, ( char * ) l_oValue );
-		}
-	l_psRc = rc_open ( l_pcRcName, true, l_psRc );
-	if ( l_psRc )while ( read_rc_line ( l_oOption, l_oValue, l_psRc ) )
-		{
-		if ( ! strcasecmp ( l_oOption, "logfile" ) )
-			g_pcLogFileName = xstrdup ( l_oValue );
-		printf ( "option: [%s], value: [%s]\n", ( char * ) l_oOption, ( char * ) l_oValue );
-		}
+		{ D_TYPE_CHAR_POINTER, "logfile", & g_pcLogFileName },
+		{ 0, NULL, NULL }
+	};
+
+bool set_variables ( HString & a_roOption, HString & a_roValue )
+	{
+	printf ( "option: [%s], value: [%s]\n", ( char * ) a_roOption,
+			( char * ) a_roValue );
+	return ( false );
+	}
+
+int process_prjrc_file ( void )
+	{
+	rc_file::process_rc_file ( "prj", NULL, g_psVars );
 	if ( ! g_pcLogFileName )
 		g_pcLogFileName = xstrdup ( "prj.log" );
-	rc_close ( l_psRc );
-	log << "done." << endl;
 	return ( 0 );
 	}

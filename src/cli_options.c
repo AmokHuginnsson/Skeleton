@@ -33,6 +33,7 @@ Copyright:
 #include "define.h"
 #include "version.h"
 #include "variables.h"
+#include "cli_options.h"
   
 /* Set all the option flags according to the switches specified.
    Return the index of the first non-option argument.                    */

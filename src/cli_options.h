@@ -28,6 +28,6 @@ Copyright:
 #define __CLI_OPTIONS_H
 
 int decode_switches ( int, char ** );
-void usage ( int );
+void usage ( int ) __attribute__  ((noreturn));
 
 #endif /* __CLI_OPTIONS_H */

@@ -6,10 +6,10 @@ AC_INIT([[prj]],[[0.0.0]],[[amok@frihet.ath.cx]])
 AC_MSG_RESULT([--- Welcome to prj configurator ---                   [[0%]]])
 AC_MSG_RESULT([--- Initialization ... ---                               [[6%]]])
 
-dnl Unique file in project: prjrc is sample configuration file.
+dnl Unique file in project: bookerrc is sample configuration file.
 AC_MSG_RESULT([--- Finding base directory ... ---                      [[12%]]])
 AC_CONFIG_SRCDIR([[prjrc]])
-AC_CONFIG_AUX_DIR([aux])
+AC_CONFIG_AUX_DIR([../stdhapi/aux])
 
 dnl prj is not Free Software.
 AC_COPYRIGHT([[prj (c) 2003 All rights reserved.]])
@@ -50,21 +50,26 @@ AC_HEADER_MAJOR
 dnl We need to know what operating system prj will be compiled on.
 AC_MSG_RESULT([--- Guessing host operating system ... ---              [[64%]]])
 AC_CHECK_FILE(
-	[[/etc/debconf.conf]],
-	[AC_DEFINE([[__HOST_OS_TYPE_DEBIAN__]]) _HOST______=['Debian. --- ']],
+	[[/etc/rc]],
+	[AC_DEFINE([[__HOST_OS_TYPE_FREEBSD__]]) _HOST________=['FreeBSD. ---  ']
+		AC_SUBST([ADDITIONAL_COMMAND],
+			[['ln -s lib$(NAME).so.$(RELEASE) lib$(NAME).so.$(VERSION).$(SUBVERSION);']])
+		AC_SUBST([LIB_INTL],["-lintl"])],
 	[AC_CHECK_FILE(
-		[[/etc/poldek.conf]],
-		[AC_DEFINE([[__HOST_OS_TYPE_PLD__]]) _HOST______=['PLD. ---    ']],
+		[[/etc/debconf.conf]],
+		[AC_DEFINE([[__HOST_OS_TYPE_DEBIAN__]]) _HOST________=['Debian. ---   ']],
 		[AC_CHECK_FILE(
-			[[/etc/rc]],
-			[AC_DEFINE([[__HOST_OS_TYPE_FREEBSD__]]) _HOST______=['FreeBSD. ---']
-				AC_SUBST([EXTRA_LIB_PATHS], [[-L/usr/local/lib/mysql]])
-				CXXFLAGS=["$CXXFLAGS -L/usr/local/lib/mysql"]],
-			[AC_MSG_ERROR([Can not recognize host operating system type!])]
+			[[/etc/poldek.conf]],
+			[AC_DEFINE([[__HOST_OS_TYPE_PLD__]]) _HOST________=['PLD. ---      ']],
+			[AC_CHECK_FILE(
+				[[/etc/random-seed]],
+				[AC_DEFINE([[__HOST_OS_TYPE_SLACKWARE__]]) _HOST________=['Slackware. ---']],
+				[AC_MSG_ERROR([Can not recognize host operating system type!])]
+			)]
 		)]
 	)]
 )
-AC_MSG_RESULT([--- Guessed host operating system is $_HOST______       [[70%]]])
+AC_MSG_RESULT([--- Guessed host operating system is $_HOST________     [[70%]]])
 
 dnl What special compiler flags we can set?
 AC_MSG_RESULT([--- Guessing specific compiler/linker features ... ---  [[71%]]])
@@ -98,21 +103,17 @@ CPPFLAGS=$CXXFLAGS;
 AC_MSG_RESULT([--- Looking for needed libraries ... ---                [[77%]]])
 AC_CHECK_LIB([ncurses],[initscr],
 							[],[AC_MSG_ERROR([Can not continue without ncurses.])])
-AC_CHECK_LIB([mysqlclient],[mysql_init],
-							[],[AC_MSG_ERROR([Can not continue without MySQL.])])
-AC_CHECK_LIB([pq],[PQsetdbLogin],
-							[],[AC_MSG_ERROR([Can not continue without PostgreSQL.])])
-dnl WARNING!!! Names in c++ objects are _mangled_ so we need so use
+dnl WARNING!!! Names in c++ objects are _mangled_ so we need to use
 dnl WARNING!!! this cryptic names here (I hope it is portable).
-dnl UPDATE!: Now I know it is not portable across direrent versions of
-dnl UPDATE!: compiler, so I used tricky hack with 'main'.
-AC_CHECK_LIB([hcore],[xmalloc],
+dnl UPDATE!: Now I know it is not portable across different versions of
+dnl UPDATE!: compiller, so I used tricky hack with 'main'.
+AC_CHECK_LIB([hcore],[hcore_init],
 							[],[AC_MSG_ERROR([Can not continue without hcore.])])
-AC_CHECK_LIB([hconsole],[main],
+AC_CHECK_LIB([hconsole],[hconsole_init],
 							[],[AC_MSG_ERROR([Can not continue without hconsole.])])
-AC_CHECK_LIB([tools],[main],
+AC_CHECK_LIB([tools],[tools_init],
 							[],[AC_MSG_ERROR([Can not continue without tools.])])
-AC_CHECK_LIB([dbwrapper],[main],
+AC_CHECK_LIB([dbwrapper],[dbwrapper_init],
 							[],[AC_MSG_ERROR([Can not continue without dbwrapper.])])
 AC_CHECK_LIB([hdata],[main],
 							[],[AC_MSG_ERROR([Can not continue without hdata.])])

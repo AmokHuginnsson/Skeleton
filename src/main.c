@@ -24,7 +24,7 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-/** #include <stdhapi.h>    / * console (ncurses) ability                  */
+/** #include <stdhapi.h>    / * all hAPI headers */
 
 /** #include "version.h"    / *                                            */
 /** #include "define.h"     / *                                            */
@@ -32,7 +32,7 @@ Copyright:
 /** #include "cli_options.h" / *                                           */
 /** #include "rc_options.h"  / *                                           */
 
-int main ( int /*a_iArgc*/, char /***a_ppcArgv*/ )
+int main ( int /*a_iArgc*/, char /** a_ppcArgv [ ]*/ )
 	{
 /*	variables declarations for main loop:                                 */
 /**	int l_iOpt = 0;                                                       **/
@@ -40,9 +40,9 @@ int main ( int /*a_iArgc*/, char /***a_ppcArgv*/ )
 /**	try                                                                   **/
 		{
 /*	TO-DO:				enter main loop code here                               */
-/**		set_handlers ( );                                                   **/
+/**		signals::set_handlers ( );                                          **/
 /**		g_pcProgramName = a_ppcArgv [ 0 ];                                  **/
-/**		process_rc_file ( );                                                **/
+/**		process_prjrc_file ( );                                             **/
 /**		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );                    **/
 /**		log.rehash ( g_pcLogFileName, g_pcProgramName );                    **/
 /**		if ( ! console::is_enabled ( ) )console::enter_curses (); **//* enabling ncurses ablilities*/
@@ -60,3 +60,4 @@ int main ( int /*a_iArgc*/, char /***a_ppcArgv*/ )
 /**	fprintf ( stderr, "Done.\n" );                                        **/
 	return ( 0 );
 	}
+
