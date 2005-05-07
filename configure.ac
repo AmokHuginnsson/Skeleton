@@ -6,7 +6,7 @@ AC_INIT([[prj]],[[0.0.0]],[[amok@frihet.ath.cx]])
 AC_MSG_RESULT([--- Welcome to prj configurator ---                   [[0%]]])
 AC_MSG_RESULT([--- Initialization ... ---                               [[6%]]])
 
-dnl Unique file in project: bookerrc is sample configuration file.
+dnl Unique file in project: prjrc is sample configuration file.
 AC_MSG_RESULT([--- Finding base directory ... ---                      [[12%]]])
 AC_CONFIG_SRCDIR([[prjrc]])
 AC_CONFIG_AUX_DIR([../stdhapi/aux])
@@ -24,23 +24,27 @@ CXXFLAGS=["-L~/lib -L/usr/local/lib -I~/prog/include -I/usr/local/include"]
 dnl Set up how configure will handle header checks.
 AC_CONFIG_HEADERS([config.h])
 
-dnl We will generate config.h with basic #defines.
-dnl AC_CONFIG_HEADER([config.h])
-
 dnl Cheching for machine type.
 AC_MSG_RESULT([--- Checking for machine type ... ---                   [[14%]]])
 AC_CANONICAL_HOST()
 
 dnl Testing presence of c compiler
+if test ["$CXX"] = ["colorgcc"] -o ["$CXX"] = ["colorg++"] ; then
+	CXX=["g++"]
+fi
+if test ["$CC"] = ["colorgcc"] ; then
+	CC=["gcc"]
+fi
 AC_MSG_RESULT([--- Testing presence of c compiler ... ---              [[19%]]])
 AC_PROG_CC
 dnl and for c++ compiler
 AC_MSG_RESULT([--- Testing presence of c++ compiler ... ---            [[25%]]])
 AC_PROG_CXX
 dnl and for c preprocesor
-AC_MSG_RESULT([--- Looking for c/c++ preprocessor and egrep ... ---    [[33%]]])
+AC_MSG_RESULT([--- Looking standrad development software ... ---       [[33%]]])
 AC_PROG_CPP
 AC_PROG_CXXCPP
+AC_CHECK_PROG([CTAGS],[exctags],[exctags],[ctags])
 
 dnl Looking for main libc headers
 AC_MSG_RESULT([--- Looking for main libc headers ... ---               [[41%]]])
@@ -71,20 +75,26 @@ dnl What special compiler flags we can set?
 AC_MSG_RESULT([--- Guessing specific compiler/linker features ... ---  [[71%]]])
 _FLAGS=''
 CXXFLAGS_ORIG=$CXXFLAGS;
+CXXFLAGS=["-Wextra"]
+AC_MSG_CHECKING([does gcc support -Wextra])
+RESULT=["no"]
+AC_TRY_COMPILE([],[],[AC_SUBST([EXTRA_WARNINGS],[-Wextra])] [RESULT=["yes"]],
+							[AC_SUBST([EXTRA_WARNINGS],[-W])])
+AC_MSG_RESULT([$RESULT])
 CXXFLAGS=["-Wshadow -Werror"]
 AC_TRY_COMPILE([#include <pthread.h>],[],
-							[AC_SUBST([SPECIAL_COMPILER_FLAGS],[-Wshadow])
+							[AC_SUBST([WARN_SHADOW],[-Wshadow])
 							_FLAGS=["-Wshadow"]],
 							[AC_MSG_WARN([[Can not use -Wshadow!]])])
 CXXFLAGS=["-pedantic-errors"]
 AC_TRY_COMPILE([#include <stdlib.h>],[],
-							[AC_SUBST([SPECIAL_HEAVY_COMPILER_FLAGS],[-pedantic-errors])
+							[AC_SUBST([PEDANTIC_ERRORS],	[-pedantic-errors])
 							_FLAGS=["$_FLAGS -pedantic-errors"]],
 							[AC_MSG_WARN([[Can not use -pedantic-errors!]])])
 CXXFLAGS=["$CXXFLAGS -Wl,--no-undefined -Wl,--fatal-warnings"]
 AC_LINK_IFELSE([[extern int errno;int main(void){return(errno);}]],
 				[CXXFLAGS=$CXXFLAGS_ORIG],
-				[AC_SUBST([SPECIAL_LINKER_FLAG],
+				[AC_SUBST([SPECIAL_LINKER_FLAGS],
 					[[-Wl,--allow-shlib-undefined]])]
 					_FLAGS=[['-Wl,--allow-shlib-undefined. ---']]
 					CXXFLAGS=["$CXXFLAGS_ORIG -Wl,--allow-shlib-undefined"]
