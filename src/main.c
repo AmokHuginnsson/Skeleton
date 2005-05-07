@@ -24,42 +24,47 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-/** #include <stdhapi.h> **/   /* all hAPI headers */
+#include <stdhapi.h> /* all hAPI headers */
 
-/** #include "version.h" **/
-/** #include "define.h" **/
-/** #include "variables.h" **/
-/** #include "cli_options.h" **/
-/** #include "rc_options.h" **/
+#include "version.h"
+#include "define.h"
+#include "variables.h"
+#include "cli_options.h"
+#include "rc_options.h"
 
-int main ( int /** a_iArgc **/, char /** * a_ppcArgv [ ] **/ )
+using namespace std;
+using namespace stdhapi;
+using namespace stdhapi::hcore;
+using namespace stdhapi::hconsole;
+using namespace stdhapi::tools;
+using namespace stdhapi::tools::util;
+
+int main ( int a_iArgc, char * a_ppcArgv [ ] )
 	{
-/**	M_PROLOG **/
+	M_PROLOG
 /* variables declarations for main loop: */
-/**	int l_iOpt = 0; **/
+	int l_iOpt = 0;
 /* end. */
-/**	try **/
+	try
 		{
 /* TO-DO: enter main loop code here */
-/**		signals::set_handlers ( ); **/
-/**		g_pcProgramName = a_ppcArgv [ 0 ]; **/
-/**		process_prjrc_file ( ); **/
-/**		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv ); **/
-/**		core::log.rehash ( g_pcLogFileName, g_pcProgramName ); **/
-/**		if ( ! console::is_enabled ( ) )console::enter_curses (); **/ /* enabling ncurses ablilities*/
+		signals::set_handlers ( );
+		g_pcProgramName = a_ppcArgv [ 0 ];
+		process_prjrc_file ( );
+		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );
+		hcore::log.rehash ( g_pcLogFileName, g_pcProgramName );
+/*		if ( ! console::is_enabled ( ) )enter_curses (); / * enabling ncurses ablilities*/
 /* *BOOM* */
-/**		if ( console::is_enabled ( ) )console::leave_curses (); **/ /* ending ncurses sesion */
+		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
 /* ... there is the place main loop ends. :OD-OT */
 		}
-/**	catch ( HException * e ) **/
-/**		{ **/
-/**		e->log ( __WHERE__ ); **/
-/**		if ( console::is_enabled ( ) )console::leave_curses (); **/ /* ending ncurses sesion */
-/**		e->print_error ( true ); **/
-/**		delete e; **/
-/**		} **/
-/**	fprintf ( stderr, "Done.\n" ); **/
+	catch ( ... )
+		{
+		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
+		throw;
+		}
+	fprintf ( stderr, "Done.\n" );
 	return ( 0 );
-/**	M_FINAL **/
+	M_FINAL
 	}
 

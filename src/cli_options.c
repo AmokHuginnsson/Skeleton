@@ -34,6 +34,9 @@ Copyright:
 #include "version.h"
 #include "variables.h"
 #include "cli_options.h"
+
+using namespace stdhapi;
+using namespace stdhapi::hcore;
   
 /* Set all the option flags according to the switches specified.
    Return the index of the first non-option argument.                    */
@@ -55,7 +58,7 @@ does very much usefull things ... really \n", g_pcProgramName );
 int decode_switches ( int a_iArgc, char ** a_ppcArgv )
 	{
 	int l_c;
-	core::log << "Decoding switches ... ";
+	hcore::log << "Decoding switches ... ";
 	while ( ( l_c = getopt_long ( a_iArgc, a_ppcArgv, 
 					"q"	   /* quiet or silent                                       */
 					"v"	   /* verbose                                               */
@@ -91,7 +94,7 @@ int decode_switches ( int a_iArgc, char ** a_ppcArgv )
 				}
 			}
 		}
-	core::log << "done" << endl;
+	hcore::log << "done" << endl;
 	return ( optind );
 	}
 
