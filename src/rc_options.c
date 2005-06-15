@@ -37,7 +37,7 @@ using namespace stdhapi::hcore;
 
 OVariable g_psVars [ ] =
 	{
-		{ D_TYPE_CHAR_POINTER, "logfile", & g_pcLogFileName },
+		{ D_TYPE_HSTRING, "log_path", & g_oLogPath },
 		{ 0, NULL, NULL }
 	};
 
@@ -51,7 +51,7 @@ bool set_variables ( HString & a_roOption, HString & a_roValue )
 int process_prjrc_file ( void )
 	{
 	rc_file::process_rc_file ( "prj", NULL, g_psVars, NULL );
-	if ( ! g_pcLogFileName )
-		g_pcLogFileName = xstrdup ( "prj.log" );
+	if ( ! g_oLogPath )
+		g_oLogPath = "prj.log";
 	return ( 0 );
 	}

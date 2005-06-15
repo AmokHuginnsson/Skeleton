@@ -52,7 +52,7 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 		g_pcProgramName = a_ppcArgv [ 0 ];
 		process_prjrc_file ( );
 		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );
-		hcore::log.rehash ( g_pcLogFileName, g_pcProgramName );
+		hcore::log.rehash ( g_oLogPath, g_pcProgramName );
 /*		if ( ! console::is_enabled ( ) )enter_curses (); / * enabling ncurses ablilities*/
 /* *BOOM* */
 		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
