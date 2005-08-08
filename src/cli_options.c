@@ -68,11 +68,11 @@ int decode_switches ( int a_iArgc, char ** a_ppcArgv )
 	int l_iUnknown = 0, l_iNonOption = 0;
 	OOption l_psOptions [ ] =
 		{
-			{ "quiet",				'q', OOption::D_NONE,			D_BOOL,			& setup.f_bQuiet,									NULL },
-			{ "silent",				'q', OOption::D_NONE,			D_BOOL,			& setup.f_bQuiet,									NULL },
-			{ "verbose",			'v', OOption::D_NONE,			D_BOOL,			& setup.f_bVerbose,								NULL },
-			{ "help",					'h', OOption::D_NONE,			D_BOOL,			& setup.f_bHelp,									usage },
-			{ "version",			'V', OOption::D_NONE,			D_NONE,			NULL,															version }
+			{ "quiet",		'q', OOption::D_NONE,	D_BOOL,	& setup.f_bQuiet,		NULL },
+			{ "silent",		'q', OOption::D_NONE,	D_BOOL,	& setup.f_bQuiet,		NULL },
+			{ "verbose",	'v', OOption::D_NONE,	D_BOOL,	& setup.f_bVerbose,	NULL },
+			{ "help",			'h', OOption::D_NONE,	D_BOOL,	& setup.f_bHelp,		usage },
+			{ "version",	'V', OOption::D_NONE,	D_NONE,	NULL,								version }
 		};
 	l_iNonOption = cl_switch::decode_switches ( a_iArgc, a_ppcArgv, l_psOptions,
 			sizeof ( l_psOptions ) / sizeof ( OOption ), & l_iUnknown );
