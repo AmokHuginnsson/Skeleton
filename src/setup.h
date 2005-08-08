@@ -1,7 +1,7 @@
 /*
 ---            `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski             ---
 
-	variables.h - this file is integral part of `prj' project.
+	setup.h - this file is integral part of `prj' project.
 
 	i.  You may not make any changes in Copyright information.
 	ii. You must attach Copyright information to any part of every copy
@@ -24,13 +24,24 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef __VARIABLES_H
-#define __VARIABLES_H
+#ifndef __SETUP_H
+#define __SETUP_H
 
-extern int g_iWantQuiet;			/* --quiet, --silent */
-extern int g_iWantVerbose;			/* --verbose */
-extern char * g_pcProgramName;
-extern stdhapi::hcore::HString g_oLogPath;
-extern struct option const * g_sLongOptions;
+struct OSetup
+	{
+	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
+										f_bHelp ( false ), f_pcProgramName ( NULL ),
+										f_oLogPath ( ) {}
+	bool f_bQuiet;			/* --quiet, --silent */
+	bool f_bVerbose;		/* --verbose */
+	bool f_bHelp;
+	char * f_pcProgramName;
+	stdhapi::hcore::HString f_oLogPath;
+private:
+	OSetup ( OSetup const & );
+	OSetup & operator = ( OSetup const & );
+	};
 
-#endif /* __VARIABLES_H */
+extern OSetup setup;
+
+#endif /* __SETUP_H */

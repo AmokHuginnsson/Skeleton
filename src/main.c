@@ -27,8 +27,7 @@ Copyright:
 #include <stdhapi.h> /* all hAPI headers */
 
 #include "version.h"
-#include "define.h"
-#include "variables.h"
+#include "setup.h"
 #include "cli_options.h"
 #include "rc_options.h"
 
@@ -38,6 +37,8 @@ using namespace stdhapi::hcore;
 using namespace stdhapi::hconsole;
 using namespace stdhapi::tools;
 using namespace stdhapi::tools::util;
+
+OSetup setup;
 
 int main ( int a_iArgc, char * a_ppcArgv [ ] )
 	{
@@ -49,10 +50,10 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 		{
 /* TO-DO: enter main loop code here */
 		signals::set_handlers ( );
-		g_pcProgramName = a_ppcArgv [ 0 ];
+		setup.f_pcProgramName = a_ppcArgv [ 0 ];
 		process_prjrc_file ( );
 		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );
-		hcore::log.rehash ( g_oLogPath, g_pcProgramName );
+		hcore::log.rehash ( setup.f_oLogPath, setup.f_pcProgramName );
 /*		if ( ! console::is_enabled ( ) )enter_curses (); / * enabling ncurses ablilities*/
 /* *BOOM* */
 		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
