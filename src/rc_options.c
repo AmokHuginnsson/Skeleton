@@ -48,7 +48,7 @@ int process_prjrc_file ( void )
 	OVariable l_psVars [ ] =
 		{
 			{ D_HSTRING, "log_path", & setup.f_oLogPath },
-			{ D_NONE, NULL, NULL }
+			{ D_VOID, NULL, NULL }
 		};
 	rc_file::process_rc_file ( "prj", NULL, l_psVars, NULL );
 	if ( ! setup.f_oLogPath )
