@@ -29,14 +29,23 @@ Copyright:
 
 struct OSetup
 	{
-	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
-										f_bHelp ( false ), f_pcProgramName ( NULL ),
-										f_oLogPath ( ) {}
 	bool f_bQuiet;			/* --quiet, --silent */
 	bool f_bVerbose;		/* --verbose */
 	bool f_bHelp;
 	char * f_pcProgramName;
 	stdhapi::hcore::HString f_oLogPath;
+	/* self-sufficient */
+	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
+										f_bHelp ( false ), f_pcProgramName ( NULL ),
+										f_oLogPath ( ) {}
+	void test_setup ( void )
+		{
+		if ( f_bQuiet && f_bVerbose )
+			{
+			stdhapi::tools::util::failure ( 1,
+					_ ( "quiet and verbose options are exclusive\n" ) );
+			}
+		}
 private:
 	OSetup ( OSetup const & );
 	OSetup & operator = ( OSetup const & );
