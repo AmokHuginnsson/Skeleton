@@ -55,6 +55,7 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 		process_prjrc_file ( );
 		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );
 		hcore::log.rehash ( setup.f_oLogPath, setup.f_pcProgramName );
+		setup.test_setup ( );
 /*		if ( ! hconsole::is_enabled ( ) )enter_curses (); / * enabling ncurses ablilities*/
 /* *BOOM* */
 		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
