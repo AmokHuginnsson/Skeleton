@@ -43,10 +43,8 @@ struct OSetup
 	void test_setup ( void )
 		{
 		if ( f_bQuiet && f_bVerbose )
-			{
 			stdhapi::tools::util::failure ( 1,
 					_ ( "quiet and verbose options are exclusive\n" ) );
-			}
 		}
 private:
 	OSetup ( OSetup const & );
