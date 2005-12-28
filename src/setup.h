@@ -42,9 +42,12 @@ struct OSetup
 										f_oLogPath ( ) {}
 	void test_setup ( void )
 		{
+		M_PROLOG
 		if ( f_bQuiet && f_bVerbose )
 			stdhapi::tools::util::failure ( 1,
 					_ ( "quiet and verbose options are exclusive\n" ) );
+		return;
+		M_EPILOG
 		}
 private:
 	OSetup ( OSetup const & );
