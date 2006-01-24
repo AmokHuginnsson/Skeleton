@@ -28,6 +28,7 @@ Copyright:
 #define __SETUP_H
 
 #include <libintl.h>
+#include <stdhapi.h>
 
 struct OSetup
 	{

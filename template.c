@@ -25,6 +25,6 @@ Copyright:
 */
 
 #include "hexception.h"
-M_CVSID ( "$CVSHeader$" );
+M_CVSID ( "$CVSHeader$" )
 #include "template.h"
 
