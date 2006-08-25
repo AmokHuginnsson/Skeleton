@@ -28,7 +28,7 @@ Copyright:
 #define __SETUP_H
 
 #include <libintl.h>
-#include <stdhapi.h>
+#include <yaal.h>
 
 struct OSetup
 	{
@@ -36,7 +36,7 @@ struct OSetup
 	bool f_bVerbose;		/* --verbose */
 	bool f_bHelp;
 	char * f_pcProgramName;
-	stdhapi::hcore::HString f_oLogPath;
+	yaal::hcore::HString f_oLogPath;
 	/* self-sufficient */
 	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
 										f_bHelp ( false ), f_pcProgramName ( NULL ),
@@ -45,7 +45,7 @@ struct OSetup
 		{
 		M_PROLOG
 		if ( f_bQuiet && f_bVerbose )
-			stdhapi::tools::util::failure ( 1,
+			yaal::tools::util::failure ( 1,
 					_ ( "quiet and verbose options are exclusive\n" ) );
 		return;
 		M_EPILOG
