@@ -29,7 +29,7 @@ Copyright:
 #include <getopt.h>
 
 #include <yaal.h>
-M_CVSID ( "$CVSHeader: Skeleton/src/cli_options.c,v 1.11 2006/01/24 11:51:46 amok Exp $" )
+M_VCSID ( "$CVSHeader: Skeleton/src/cli_options.c,v 1.11 2006/01/24 11:51:46 amok Exp $" )
 
 #include "cli_options.h"
 #include "version.h"

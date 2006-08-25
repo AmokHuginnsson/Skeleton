@@ -25,6 +25,6 @@ Copyright:
 */
 
 #include "hexception.h"
-M_CVSID ( "$CVSHeader$" )
+M_VCSID ( "$CVSHeader: Skeleton/template.c,v 1.2 2004/05/18 08:44:12 amok Exp $" )
 #include "template.h"
 
