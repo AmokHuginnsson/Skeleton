@@ -1,7 +1,7 @@
 /*
 ---           `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski            ---
 
-	template.c - this file is integral part of `prj' project.
+	template.cxx - this file is integral part of `prj' project.
 
 	i.  You may not make any changes in Copyright information.
 	ii. You must attach Copyright information to any part of every copy
@@ -25,6 +25,6 @@ Copyright:
 */
 
 #include "hexception.h"
-M_VCSID ( "$CVSHeader: Skeleton/template.c,v 1.2 2004/05/18 08:44:12 amok Exp $" )
+M_VCSID ( "$Id$" )
 #include "template.h"
 
