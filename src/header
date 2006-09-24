@@ -7,3 +7,5 @@
 
 
 #include <yaal/yaal.h>
+
+/* vim: set ft=cpp : */
