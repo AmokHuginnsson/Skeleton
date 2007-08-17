@@ -46,6 +46,7 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 	M_PROLOG
 /* variables declarations for main loop: */
 	int l_iOpt = 0;
+	HConsole& cons = HCons::get_instance();
 /* end. */
 	try
 		{
@@ -56,14 +57,17 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 		l_iOpt = decode_switches ( a_iArgc, a_ppcArgv );
 		hcore::log.rehash ( setup.f_oLogPath, setup.f_pcProgramName );
 		setup.test_setup ( );
-/*		if ( ! hconsole::is_enabled ( ) )enter_curses (); / * enabling ncurses ablilities*/
+/*		if ( ! cons.is_enabled ( ) )
+			enter_curses (); */ /* enabling ncurses ablilities */
 /* *BOOM* */
-		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
+		if ( cons.is_enabled ( ) )
+			cons.leave_curses (); /* ending ncurses sesion */
 /* ... there is the place main loop ends. :OD-OT */
 		}
 	catch ( ... )
 		{
-		if ( hconsole::is_enabled ( ) )leave_curses (); /* ending ncurses sesion */
+		if ( cons.is_enabled ( ) )
+			cons.leave_curses (); /* ending ncurses sesion */
 		throw;
 		}
 	fprintf ( stderr, "Done.\n" );
