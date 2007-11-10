@@ -37,48 +37,48 @@ M_VCSID ( "$Id$" )
 
 using namespace yaal;
 using namespace yaal::hcore;
+using namespace yaal::tools;
   
 /* Set all the option flags according to the switches specified.
    Return the index of the first non-option argument.                    */
 
-void usage ( void ) __attribute__ ( ( __noreturn__ ) );
-void usage ( void )
+typedef HPair<OOption*,int> option_info_t;
+
+void usage( void* ) __attribute__(( __noreturn__ ));
+void usage( void* arg )
 	{
-	printf ( "%s - "
-"does very much usefull things ... really\n", setup.f_pcProgramName );
-	printf ( "Usage: %s [OPTION]... [FILE]...\n", setup.f_pcProgramName );
-	printf (
-"Options:\n"
-"  -q, --quiet, --silent      inhibit usual output\n"
-"  --verbose                  print more information\n"
-"  -h, --help                 display this help and exit\n"
-"  -V, --version              output version information and exit\n" );
+	option_info_t* info = static_cast<option_info_t*>( arg );
+	util::show_help( info->first, info->second, setup.f_pcProgramName, "does very much usefull things ... really" );
 	throw ( setup.f_bHelp ? 0 : 1 );
 	}
 
-void version ( void ) __attribute__ ( ( __noreturn__ ) );
-void version ( void )
+void version( void* ) __attribute__(( __noreturn__ ));
+void version( void* )
 	{
 	printf ( "`prj' %s\n", VER );
 	throw ( 0 );
 	}
 
-int decode_switches ( int a_iArgc, char ** a_ppcArgv )
+int decode_switches( int a_iArgc, char** a_ppcArgv )
 	{
 	M_PROLOG
 	int l_iUnknown = 0, l_iNonOption = 0;
-	OOption l_psOptions [ ] =
+	simple_callback_t help( usage, NULL );
+	simple_callback_t version_call( version, NULL );
+	OOption l_psOptions[] =
 		{
-			{ "quiet",		'q', OOption::D_NONE,	D_BOOL,	& setup.f_bQuiet,		NULL },
-			{ "silent",		'q', OOption::D_NONE,	D_BOOL,	& setup.f_bQuiet,		NULL },
-			{ "verbose",	'v', OOption::D_NONE,	D_BOOL,	& setup.f_bVerbose,	NULL },
-			{ "help",			'h', OOption::D_NONE,	D_BOOL,	& setup.f_bHelp,		usage },
-			{ "version",	'V', OOption::D_NONE,	D_VOID,	NULL,								version }
+			{ "quiet", D_BOOL, &setup.f_bQuiet, "q", OOption::D_NONE, NULL, "inhibit usual output", NULL },
+			{ "silent", D_BOOL, &setup.f_bQuiet, "q", OOption::D_NONE, NULL, "inhibit usual output", NULL },
+			{ "verbose", D_BOOL, &setup.f_bVerbose, "v", OOption::D_NONE, NULL, "print more information", NULL },
+			{ "help", D_BOOL, &setup.f_bHelp, "h", OOption::D_NONE, NULL, "display this help and exit", &help },
+			{ "version", D_VOID, NULL, "V", OOption::D_NONE, NULL, "output version information and exit", &version_call }
 		};
-	l_iNonOption = cl_switch::decode_switches ( a_iArgc, a_ppcArgv, l_psOptions,
-			sizeof ( l_psOptions ) / sizeof ( OOption ), & l_iUnknown );
+	option_info_t info( l_psOptions, sizeof ( l_psOptions ) / sizeof ( OOption ) );
+	help.second = &info;
+	l_iNonOption = cl_switch::decode_switches( a_iArgc, a_ppcArgv, l_psOptions,
+			info.second, &l_iUnknown );
 	if ( l_iUnknown > 0 )
-		usage ( );
+		usage( NULL );
 	return ( l_iNonOption );
 	M_EPILOG
 	}

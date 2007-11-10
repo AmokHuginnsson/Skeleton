@@ -44,12 +44,12 @@ bool set_variables ( HString & a_roOption, HString & a_roValue )
 	return ( false );
 	}
 
-int process_prjrc_file ( void )
+int process_prjrc_file( void )
 	{
-	OVariable l_psVars [ ] =
+	OOption l_psVars[] =
 		{
-			{ D_HSTRING, "log_path", & setup.f_oLogPath },
-			{ D_VOID, NULL, NULL }
+			{ "log_path", D_HSTRING, & setup.f_oLogPath, NULL, OOption::D_REQUIRED, "path", "path pointing to file for application logs", NULL },
+			{ NULL, D_VOID, NULL, NULL, OOption::D_NONE, NULL, NULL, NULL }
 		};
 	rc_file::process_rc_file ( "prj", NULL, l_psVars, NULL );
 	if ( ! setup.f_oLogPath )
