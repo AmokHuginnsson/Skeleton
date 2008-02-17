@@ -41,7 +41,7 @@ using namespace yaal::tools::util;
 
 OSetup setup;
 
-int main ( int a_iArgc, char * a_ppcArgv [ ] )
+int main( int a_iArgc, char* a_ppcArgv[] )
 	{
 	M_PROLOG
 /* variables declarations for main loop: */
@@ -55,22 +55,22 @@ int main ( int a_iArgc, char * a_ppcArgv [ ] )
 		setup.f_pcProgramName = a_ppcArgv[ 0 ];
 		process_prjrc_file();
 		l_iOpt = decode_switches( a_iArgc, a_ppcArgv );
-		hcore::log.rehash ( setup.f_oLogPath, setup.f_pcProgramName );
+		hcore::log.rehash( setup.f_oLogPath, setup.f_pcProgramName );
 		setup.test_setup();
-/*		if ( ! cons.is_enabled ( ) )
+/*		if ( ! cons.is_enabled() )
 			enter_curses (); */ /* enabling ncurses ablilities */
 /* *BOOM* */
-		if ( cons.is_enabled ( ) )
-			cons.leave_curses (); /* ending ncurses sesion */
+		if ( cons.is_enabled() )
+			cons.leave_curses(); /* ending ncurses sesion */
 /* ... there is the place main loop ends. :OD-OT */
 		}
 	catch ( ... )
 		{
-		if ( cons.is_enabled ( ) )
-			cons.leave_curses (); /* ending ncurses sesion */
+		if ( cons.is_enabled() )
+			cons.leave_curses(); /* ending ncurses sesion */
 		throw;
 		}
-	fprintf ( stderr, "Done.\n" );
+	::fprintf( stderr, "Done.\n" );
 	return ( 0 );
 	M_FINAL
 	}
