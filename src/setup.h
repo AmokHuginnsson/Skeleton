@@ -41,6 +41,7 @@ struct OSetup
 	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
 										f_bHelp ( false ), f_pcProgramName ( NULL ),
 										f_oLogPath ( ) {}
+	void test_setup( void );
 private:
 	OSetup ( OSetup const & );
 	OSetup & operator = ( OSetup const & );
