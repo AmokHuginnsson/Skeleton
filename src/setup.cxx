@@ -1,7 +1,7 @@
 /*
----            `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski             ---
+---           `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski            ---
 
-	setup.h - this file is integral part of `prj' project.
+	setup.cxx - this file is integral part of `prj' project.
 
 	i.  You may not make any changes in Copyright information.
 	ii. You must attach Copyright information to any part of every copy
@@ -24,28 +24,19 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef __SETUP_H
-#define __SETUP_H
-
-#include <libintl.h>
 #include <yaal/yaal.h>
+M_VCSID ( "$Id$" )
+#include "setup.h"
 
-struct OSetup
+using namespace yaal::hcore;
+
+void OSetup::test_setup( void )
 	{
-	bool f_bQuiet;			/* --quiet, --silent */
-	bool f_bVerbose;		/* --verbose */
-	bool f_bHelp;
-	char * f_pcProgramName;
-	yaal::hcore::HString f_oLogPath;
-	/* self-sufficient */
-	OSetup ( void ) : f_bQuiet ( false ), f_bVerbose ( false ),
-										f_bHelp ( false ), f_pcProgramName ( NULL ),
-										f_oLogPath ( ) {}
-private:
-	OSetup ( OSetup const & );
-	OSetup & operator = ( OSetup const & );
-	};
+	M_PROLOG
+	if ( f_bQuiet && f_bVerbose )
+		yaal::tools::util::failure( 1,
+				_( "quiet and verbose options are exclusive\n" ) );
+	return;
+	M_EPILOG
+	}
 
-extern OSetup setup;
-
-#endif /* __SETUP_H */
