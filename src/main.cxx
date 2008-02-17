@@ -58,7 +58,7 @@ int main( int a_iArgc, char* a_ppcArgv[] )
 		hcore::log.rehash( setup.f_oLogPath, setup.f_pcProgramName );
 		setup.test_setup();
 /*		if ( ! cons.is_enabled() )
-			enter_curses (); */ /* enabling ncurses ablilities */
+			enter_curses(); */ /* enabling ncurses ablilities */
 /* *BOOM* */
 		if ( cons.is_enabled() )
 			cons.leave_curses(); /* ending ncurses sesion */
