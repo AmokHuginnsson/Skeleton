@@ -30,6 +30,9 @@ Copyright:
 #include <libintl.h>
 #include <yaal/yaal.h>
 
+namespace prj
+{
+
 struct OSetup
 	{
 	bool f_bQuiet;			/* --quiet, --silent */
@@ -49,4 +52,7 @@ private:
 
 extern OSetup setup;
 
+}
+
 #endif /* __SETUP_H */
+

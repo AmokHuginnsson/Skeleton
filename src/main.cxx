@@ -38,8 +38,14 @@ using namespace yaal::hcore;
 using namespace yaal::hconsole;
 using namespace yaal::tools;
 using namespace yaal::tools::util;
+using namespace prj;
+
+namespace prj
+{
 
 OSetup setup;
+
+}
 
 int main( int a_iArgc, char* a_ppcArgv[] )
 	{

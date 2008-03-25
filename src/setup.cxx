@@ -30,6 +30,9 @@ M_VCSID ( "$Id$" )
 
 using namespace yaal::hcore;
 
+namespace prj
+{
+
 void OSetup::test_setup( void )
 	{
 	M_PROLOG
@@ -39,4 +42,6 @@ void OSetup::test_setup( void )
 	return;
 	M_EPILOG
 	}
+
+}
 
