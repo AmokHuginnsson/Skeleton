@@ -35,3 +35,4 @@ int decode_switches ( int, char ** );
 }
 
 #endif /* __CLI_OPTIONS_H */
+
