@@ -27,5 +27,11 @@ Copyright:
 #ifndef __TEMPLATE_H
 #define __TEMPLATE_H
 
+namespace prj
+{
+
+
+}
+
 #endif /* not __TEMPLATE_H */
 

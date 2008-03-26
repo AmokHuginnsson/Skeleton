@@ -24,7 +24,12 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#include "hexception.h"
 M_VCSID ( "$Id$" )
 #include "template.h"
+
+namespace prj
+{
+
+
+}
 
