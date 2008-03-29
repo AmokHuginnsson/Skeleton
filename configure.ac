@@ -9,7 +9,7 @@ AC_MSG_RESULT([--- Initialization ... ---                               [[6%]]])
 dnl Unique file in project: prjrc is sample configuration file.
 AC_MSG_RESULT([--- Finding base directory ... ---                      [[12%]]])
 AC_CONFIG_SRCDIR([[prjrc]])
-AC_CONFIG_AUX_DIR([../yaal/aux])
+AC_CONFIG_AUX_DIR([../yaal/_aux])
 
 dnl prj is not Free Software.
 AC_COPYRIGHT([[prj (c) 2003 All rights reserved.]])
