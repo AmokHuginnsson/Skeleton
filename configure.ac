@@ -1,7 +1,7 @@
 dnl configure.ac is integral part of prj project.
 
 dnl Initialization data.
-AC_INIT([[prj]],[[0.0.0]],[[amok@frihet.ath.cx]])
+AC_INIT([[prj]],[[0.0.0]],[[amok@codestation.org]])
 
 AC_MSG_RESULT([--- Welcome to prj configurator ---                   [[0%]]])
 AC_MSG_RESULT([--- Initialization ... ---                               [[6%]]])
