@@ -24,7 +24,9 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-M_VCSID ( "$Id$" )
+#include <yaal/yaal.h>
+#include "hcore/hexception.h"
+M_VCSID( "$Id$" )
 #include "template.h"
 
 namespace prj
