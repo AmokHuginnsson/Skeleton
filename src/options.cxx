@@ -46,8 +46,7 @@ namespace prj
 bool set_variables( HString& a_roOption, HString& a_roValue )
 	{
 	::fprintf( stdout, "option: [%s], value: [%s]\n",
-			static_cast<char const* const>( a_roOption ),
-			static_cast<char const* const>( a_roValue ) );
+			a_roOption.raw(), a_roValue.raw() );
 	return ( false );
 	}
 
@@ -91,8 +90,8 @@ OOption n_psOptions[] =
 
 int process_prjrc_file( void )
 	{
-	rc_file::process_rc_file ( "prj", NULL, n_psOptions, NULL );
-	if ( ! setup.f_oLogPath )
+	rc_file::process_rc_file( "prj", "", n_psOptions, NULL );
+	if ( setup.f_oLogPath.is_empty() )
 		setup.f_oLogPath = "prj.log";
 	return ( 0 );
 	}
