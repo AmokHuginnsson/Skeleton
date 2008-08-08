@@ -162,7 +162,7 @@ AC_CHECK_LIB([hdata],[yaal_hdata_main],
 AC_MSG_RESULT([--- All needed libraries found. ---                     [[83%]]])
 
 AC_MSG_RESULT([--- Looking for needed headers ... ---                  [[84%]]])
-AC_CHECK_HEADERS([[yaal/yaal.h]],,
+AC_CHECK_HEADERS([yaal/yaal.h],,
 			[AC_MSG_ERROR([[Can not continue without yaal devel!]])])
 AC_MSG_RESULT([--- Done looking for needed header, all found. ---      [[92%]]])
 
