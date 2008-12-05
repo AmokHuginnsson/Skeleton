@@ -1,7 +1,7 @@
 /*
 ---           `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski            ---
 
-	template.h - this file is integral part of `prj' project.
+	template.hxx - this file is integral part of `prj' project.
 
 	i.  You may not make any changes in Copyright information.
 	ii. You must attach Copyright information to any part of every copy
@@ -24,8 +24,8 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef __TEMPLATE_H
-#define __TEMPLATE_H
+#ifndef TEMPLATE_HXX_INCLUDED
+#define TEMPLATE_HXX_INCLUDED
 
 namespace prj
 {
@@ -33,5 +33,5 @@ namespace prj
 
 }
 
-#endif /* not __TEMPLATE_H */
+#endif /* not TEMPLATE_HXX_INCLUDED */
 

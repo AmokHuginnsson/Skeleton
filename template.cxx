@@ -24,10 +24,10 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#include <yaal/yaal.h>
-#include "hcore/base.h"
+#include <yaal/yaal.hxx>
+#include "hcore/base.hxx"
 M_VCSID( "$Id: "__ID__" $" )
-#include "template.h"
+#include "template.hxx"
 
 namespace prj
 {

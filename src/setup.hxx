@@ -28,7 +28,7 @@ Copyright:
 #define __SETUP_H
 
 #include <libintl.h>
-#include <yaal/yaal.h>
+#include <yaal/hcore/hstring.hxx>
 
 namespace prj
 {
