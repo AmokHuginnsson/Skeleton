@@ -1,7 +1,7 @@
 /*
 ---            `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski             ---
 
-	setup.h - this file is integral part of `prj' project.
+	setup.hxx - this file is integral part of `prj' project.
 
 	i.  You may not make any changes in Copyright information.
 	ii. You must attach Copyright information to any part of every copy
@@ -24,8 +24,8 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef __SETUP_H
-#define __SETUP_H
+#ifndef PRJ_SETUP_HXX_INCLUDED
+#define PRJ_SETUP_HXX_INCLUDED
 
 #include <libintl.h>
 #include <yaal/hcore/hstring.hxx>
@@ -54,5 +54,5 @@ extern OSetup setup;
 
 }
 
-#endif /* __SETUP_H */
+#endif /* PRJ_SETUP_HXX_INCLUDED */
 
