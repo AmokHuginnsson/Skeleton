@@ -30,8 +30,7 @@ Copyright:
 namespace prj
 {
 
-int process_prjrc_file( void );
-int decode_switches( int, char** );
+int handle_program_options( int, char** );
 
 }
 
