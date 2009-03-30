@@ -37,13 +37,12 @@ struct OSetup
 	{
 	bool f_bQuiet;			/* --quiet, --silent */
 	bool f_bVerbose;		/* --verbose */
-	bool f_bHelp;
 	char* f_pcProgramName;
 	yaal::hcore::HString f_oLogPath;
 	/* self-sufficient */
-	OSetup( void ) : f_bQuiet( false ), f_bVerbose( false ),
-										f_bHelp( false ), f_pcProgramName( NULL ),
-										f_oLogPath() {}
+	OSetup( void )
+		: f_bQuiet( false ), f_bVerbose( false ),
+		f_pcProgramName( NULL ), f_oLogPath() {}
 	void test_setup( void );
 private:
 	OSetup( OSetup const& );
