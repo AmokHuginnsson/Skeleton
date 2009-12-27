@@ -1,6 +1,7 @@
 dnl configure.ac is integral part of prj project.
 
 dnl Initialization data.
+m4_include([_aux/aclib.m4])
 pushdef([MY_PACKAGE_VERSION],[0.0.0-esyscmd(date +%Y%m%d|tr -d '\n')])
 AC_INIT([[prj]],[MY_PACKAGE_VERSION],[[amok@codestation.org]])
 
@@ -72,55 +73,43 @@ dnl Looking for main libc headers
 AC_MSG_RESULT([--- Looking for main libc headers ... ---               [[41%]]])
 AC_HEADER_MAJOR
 
-dnl We need to know what operating system prj will be compiled on.
-AC_MSG_RESULT([--- Guessing host operating system ... ---              [[64%]]])
-AC_CHECK_FILE(
-	[[/etc/rc]],
-	[AC_DEFINE([__HOST_OS_TYPE_FREEBSD__],[],[The operating system is FreeBSD.]) _HOST________=['FreeBSD. ---  ']],
-	[AC_CHECK_FILE(
-		[[/etc/debconf.conf]],
-		[AC_DEFINE([__HOST_OS_TYPE_DEBIAN__],[],[The operating system is Debian.]) _HOST________=['Debian. ---   ']],
-		[AC_CHECK_FILE(
-			[[/etc/poldek/poldek.conf]],
-			[AC_DEFINE([__HOST_OS_TYPE_PLD__],[],[The operating system is PLD.]) _HOST________=['PLD. ---      ']],
-			[AC_CHECK_FILE(
-				[[/etc/random-seed]],
-				[AC_DEFINE([__HOST_OS_TYPE_SLACKWARE__],[],[The operating system is Slackware.]) _HOST________=['Slackware. ---']],
-				[AC_MSG_ERROR([Can not recognize host operating system type!])]
-			)]
-		)]
-	)]
-)
-AC_MSG_RESULT([--- Guessed host operating system is $_HOST________     [[70%]]])
+YAAL_DETECT_OPERATING_SYSTEM
+YAAL_DETECT_PHYSICAL_MEMORY
 
 dnl What special compiler flags we can set?
 AC_MSG_RESULT([--- Guessing specific compiler/linker features ... ---  [[71%]]])
+
+YAAL_DETECT_FLAGS(EXTRA_CXXFLAGS, [-fPIC], [C++])
+YAAL_DETECT_FLAGS(RDYNAMIC, [-rdynamic], [C++])
+YAAL_DETECT_FLAGS(EXTRA_LXXFLAGS, [-Wl,--fatal-warnings], [C++])
+YAAL_DETECT_FLAGS(EXTRA_LXXFLAGS, [-Wl,--export-dynamic], [C++])
+YAAL_DETECT_FLAGS(EXTRA_LXXFLAGS, [-Wl,--no-undefined], [C++])
+YAAL_DETECT_FLAGS(EXTRA_LXXFLAGS, [-Wl,--enable-auto-import], [C++])
+YAAL_DETECT_FLAGS(START_GROUP, [-Wl,--start-group], [C++])
+if test ["x${START_GROUP}"] != ["x"] ; then
+	END_GROUP="-Wl,--end-group"
+fi
 _FLAGS=''
 CXXFLAGS_ORIG=$CXXFLAGS;
 CXXFLAGS=["-Wextra"]
 AC_MSG_CHECKING([does gcc support -Wextra])
 RESULT=["no"]
-AC_TRY_COMPILE([],[],[AC_SUBST([EXTRA_WARNINGS],[-Wextra])] [RESULT=["yes"]],
-							[AC_SUBST([EXTRA_WARNINGS],[-W])])
+AC_COMPILE_IFELSE([ ],
+							[EXTRA_CXXFLAGS=["${EXTRA_CXXFLAGS} -Wextra"]]
+							[RESULT=["yes"]],
+							[EXTRA_CXXFLAGS=["${EXTRA_CXXFLAGS} -W]"])
 AC_MSG_RESULT([$RESULT])
 CXXFLAGS=["-Wshadow -Werror"]
-AC_TRY_COMPILE([#include <pthread.h>],[],
-							[AC_SUBST([WARN_SHADOW],[-Wshadow])
+AC_COMPILE_IFELSE([#include <pthread.h>],
+							[EXTRA_CXXFLAGS=["${EXTRA_CXXFLAGS} -Wshadow"]
 							_FLAGS=["-Wshadow"]],
-							[AC_MSG_WARN([[Can not use -Wshadow!]])])
+							[AC_MSG_WARN([[Cannot use -Wshadow!]])])
+CXXFLAGS=$CXXFLAGS_ORIG
 CXXFLAGS=["-pedantic-errors"]
-AC_TRY_COMPILE([#include <stdlib.h>],[],
-							[AC_SUBST([PEDANTIC_ERRORS],	[-pedantic-errors])
+AC_COMPILE_IFELSE([#include <cstdlib>],
+							[EXTRA_CXXFLAGS=["${EXTRA_CXXFLAGS} -pedantic-errors"]
 							_FLAGS=["$_FLAGS -pedantic-errors"]],
-							[AC_MSG_WARN([[Can not use -pedantic-errors!]])])
-CXXFLAGS=["$CXXFLAGS -Wl,--no-undefined -Wl,--fatal-warnings"]
-AC_LINK_IFELSE([[extern int my_undefined_symbol;int main(void){return(my_undefined_symbol);}]],
-				[CXXFLAGS=$CXXFLAGS_ORIG],
-				[AC_SUBST([SPECIAL_LINKER_FLAGS],
-					[[-Wl,--allow-shlib-undefined]])]
-					_FLAGS=[['-Wl,--allow-shlib-undefined. ---']]
-					CXXFLAGS=["$CXXFLAGS_ORIG -Wl,--allow-shlib-undefined"]
-					[AC_MSG_WARN([[We must use -Wl,--allow-shlib-undefined!]])])
+							[AC_MSG_WARN([[Cannot use -pedantic-errors!]])])
 if test ["$_FLAGS"] = [""] ; then
 	_FLAGS='none. ---                      [[76%]]'
 fi
@@ -129,12 +118,9 @@ AC_MSG_RESULT([--- Guessed fetures are: $_FLAGS])
 dnl Now we can look for all needed libraries.
 CPPFLAGS=$CXXFLAGS;
 AC_MSG_RESULT([--- Looking for needed libraries ... ---                [[77%]]])
+AC_SEARCH_LIBS([libintl_gettext],[intl],,[AC_SEARCH_LIBS([gettext],[intl],,[AC_MSG_ERROR([Cannot continue without localization library.])])])
 AC_CHECK_LIB([ncurses],[initscr],
 							[],[AC_MSG_ERROR([Can not continue without ncurses.])])
-dnl WARNING!!! Names in c++ objects are _mangled_ so we need to use
-dnl WARNING!!! this cryptic names here (I hope it is portable).
-dnl UPDATE!: Now I know it is not portable across different versions of
-dnl UPDATE!: compiller, so I used tricky hack with 'main'.
 AC_CHECK_LIB([hcore],[yaal_hcore_main],
 							[],[AC_MSG_ERROR([Can not continue without hcore.])])
 AC_CHECK_LIB([hconsole],[yaal_hconsole_main],
@@ -154,6 +140,11 @@ AC_MSG_RESULT([--- Done looking for needed header, all found. ---      [[92%]]])
 
 dnl We need to check if out ncurses devel is not brain-damaged.
 AC_MSG_RESULT([--- Libraries/environment sanity check ... ---          [[93%]]])
+
+AC_SUBST([EXTRA_CXXFLAGS],[${EXTRA_CXXFLAGS}])
+AC_SUBST([EXTRA_LXXFLAGS],[${EXTRA_LXXFLAGS}])
+AC_SUBST([START_GROUP],[${START_GROUP}])
+AC_SUBST([END_GROUP],[${END_GROUP}])
 
 AH_TOP([/* $Id$ */
 
