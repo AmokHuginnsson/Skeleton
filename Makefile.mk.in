@@ -30,10 +30,8 @@ SUBVERSION		= 0
 EXTRAVERSION	= 0
 include $(DIR_ROOT)/_aux/mk/0_paths.mk
 LIBS					= pthread hcore tools dbwrapper hconsole hdata hconsole dbwrapper tools hcore pthread
-TARGET				= prj
-SRC_TARGET		= src
+$(eval $(call NEW_TARGET,prj,src,,@RDYNAMIC@))
 EXEC_NAME			= 1exec
-TARGETS				= TARGET
 CTAGS	= @CTAGS@
 GITID = @GITID@
 
@@ -41,8 +39,8 @@ include $(DIR_ROOT)/_aux/inc-helper-pre.mk
 
 CXXFLAGS += @EXTRA_CXXFLAGS@ @DEFS@
 LXXFLAGS +=	@EXTRA_LXXFLAGS@
-START_GROUP=@START_GROUP@
-END_GROUP=@END_GROUP@
+START_GROUP = @START_GROUP@
+END_GROUP = @END_GROUP@
 
 include $(DIR_ROOT)/_aux/inc-helper-post.mk
 
