@@ -30,6 +30,8 @@ Copyright:
 #include <libintl.h>
 #include <yaal/hcore/hstring.hxx>
 
+#include "config.hxx"
+
 namespace prj
 {
 
