@@ -75,7 +75,7 @@ int main( int a_iArgc, char* a_ppcArgv[] )
 			cons.leave_curses(); /* ending ncurses sesion */
 		throw;
 		}
-	::fprintf( stderr, "Done.\n" );
+	cerr << _( "Done" ) << endl;
 	return ( 0 );
 	M_FINAL
 	}
