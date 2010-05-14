@@ -36,7 +36,7 @@ namespace prj
 void OSetup::test_setup( void )
 	{
 	M_PROLOG
-	if ( f_bQuiet && f_bVerbose )
+	if ( _quiet && _verbose )
 		yaal::tools::util::failure( 1,
 				_( "quiet and verbose options are exclusive\n" ) );
 	return;

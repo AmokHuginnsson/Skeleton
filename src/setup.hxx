@@ -37,14 +37,14 @@ namespace prj
 
 struct OSetup
 	{
-	bool f_bQuiet;			/* --quiet, --silent */
-	bool f_bVerbose;		/* --verbose */
-	char* f_pcProgramName;
-	yaal::hcore::HString f_oLogPath;
+	bool _quiet;			/* --quiet, --silent */
+	bool _verbose;		/* --verbose */
+	char* _programName;
+	yaal::hcore::HString _logPath;
 	/* self-sufficient */
 	OSetup( void )
-		: f_bQuiet( false ), f_bVerbose( false ),
-		f_pcProgramName( NULL ), f_oLogPath() {}
+		: _quiet( false ), _verbose( false ),
+		_programName( NULL ), _logPath() {}
 	void test_setup( void );
 private:
 	OSetup( OSetup const& );
