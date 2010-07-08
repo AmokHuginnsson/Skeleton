@@ -24,6 +24,8 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
+#include <cstdio>
+
 #include <yaal/yaal.hxx>
 M_VCSID( "$Id: "__ID__" $" )
 #include "setup.hxx"
@@ -39,6 +41,10 @@ void OSetup::test_setup( void )
 	if ( _quiet && _verbose )
 		yaal::tools::util::failure( 1,
 				_( "quiet and verbose options are exclusive\n" ) );
+	if ( _verbose )
+		clog.reset( HStreamInterface::ptr_t( new HFile( stdout ) ) );
+	if ( _quiet )
+		cout.reset();
 	return;
 	M_EPILOG
 	}
