@@ -49,6 +49,7 @@ OSetup setup;
 
 int main( int argc_, char* argv_[] )
 	{
+	M_AT_END_OF_SCOPE( HSignalService::get_instance().stop(); );
 	M_PROLOG
 /* variables declarations for main loop: */
 	int opt = 0;
