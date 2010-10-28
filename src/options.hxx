@@ -25,7 +25,7 @@ Copyright:
 */
 
 #ifndef PRJ_OPTIONS_HXX_INCLUDED
-#define PRJ_OPTIONS_HXX_INCLUDED
+#define PRJ_OPTIONS_HXX_INCLUDED 1
 
 namespace prj
 {
@@ -34,5 +34,5 @@ int handle_program_options( int, char** );
 
 }
 
-#endif /* PRJ_OPTIONS_HXX_INCLUDED */
+#endif /* #ifndef PRJ_OPTIONS_HXX_INCLUDED */
 

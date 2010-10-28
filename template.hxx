@@ -33,5 +33,5 @@ namespace prj
 
 }
 
-#endif /* not TEMPLATE_HXX_INCLUDED */
+#endif /* #ifndef TEMPLATE_HXX_INCLUDED */
 

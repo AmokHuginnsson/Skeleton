@@ -25,7 +25,7 @@ Copyright:
 */
 
 #ifndef PRJ_SETUP_HXX_INCLUDED
-#define PRJ_SETUP_HXX_INCLUDED
+#define PRJ_SETUP_HXX_INCLUDED 1
 
 #include <libintl.h>
 #include <yaal/hcore/hstring.hxx>
@@ -55,5 +55,5 @@ extern OSetup setup;
 
 }
 
-#endif /* PRJ_SETUP_HXX_INCLUDED */
+#endif /* #ifndef PRJ_SETUP_HXX_INCLUDED */
 
