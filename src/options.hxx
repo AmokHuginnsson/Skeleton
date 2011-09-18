@@ -27,8 +27,7 @@ Copyright:
 #ifndef PRJ_OPTIONS_HXX_INCLUDED
 #define PRJ_OPTIONS_HXX_INCLUDED 1
 
-namespace prj
-{
+namespace prj {
 
 int handle_program_options( int, char** );
 

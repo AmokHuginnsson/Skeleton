@@ -29,8 +29,7 @@ Copyright:
 M_VCSID( "$Id: "__ID__" $" )
 #include "template.hxx"
 
-namespace prj
-{
+namespace prj {
 
 
 }

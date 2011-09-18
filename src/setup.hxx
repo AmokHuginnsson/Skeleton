@@ -32,11 +32,9 @@ Copyright:
 
 #include "config.hxx"
 
-namespace prj
-{
+namespace prj {
 
-struct OSetup
-	{
+struct OSetup {
 	bool _quiet;			/* --quiet, --silent */
 	bool _verbose;		/* --verbose */
 	char* _programName;
@@ -49,7 +47,7 @@ struct OSetup
 private:
 	OSetup( OSetup const& );
 	OSetup& operator = ( OSetup const& );
-	};
+};
 
 extern OSetup setup;
 

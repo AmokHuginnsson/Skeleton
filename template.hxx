@@ -27,8 +27,7 @@ Copyright:
 #ifndef TEMPLATE_HXX_INCLUDED
 #define TEMPLATE_HXX_INCLUDED 1
 
-namespace prj
-{
+namespace prj {
 
 
 }
