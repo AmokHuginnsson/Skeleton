@@ -1,7 +1,7 @@
 /*
----           `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski            ---
+---           `Skeleton' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski            ---
 
-	setup.cxx - this file is integral part of `prj' project.
+	setup.cxx - this file is integral part of `Skeleton' project.
 
   i.  You may not make any changes in Copyright information.
   ii. You must attach Copyright information to any part of every copy
@@ -32,7 +32,7 @@ M_VCSID( "$Id: "__ID__" $" )
 
 using namespace yaal::hcore;
 
-namespace prj {
+namespace Skeleton {
 
 void OSetup::test_setup( void ) {
 	M_PROLOG

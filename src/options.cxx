@@ -1,7 +1,7 @@
 /*
----       `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski         ---
+---       `Skeleton' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski         ---
 
-	options.cxx - this file is integral part of `prj' project.
+	options.cxx - this file is integral part of `Skeleton' project.
 
   i.  You may not make any changes in Copyright information.
   ii. You must attach Copyright information to any part of every copy
@@ -40,7 +40,7 @@ using namespace yaal::hcore;
 using namespace yaal::tools;
 using namespace yaal::tools::util;
 
-namespace prj {
+namespace Skeleton {
 
 namespace {
 
@@ -72,9 +72,9 @@ int handle_program_options( int argc_, char** argv_ ) {
 		( "help", program_options_helper::option_value( stop ), 'h', HProgramOptionsHandler::OOption::TYPE::NONE, "display this help and stop", program_options_helper::callback( util::show_help, &info ) )
 		( "dump-configuration", program_options_helper::option_value( stop ), 'W', HProgramOptionsHandler::OOption::TYPE::NONE, "dump current configuration", program_options_helper::callback( util::dump_configuration, &info ) )
 		( "version", program_options_helper::no_value, 'V', HProgramOptionsHandler::OOption::TYPE::NONE, "output version information and stop", program_options_helper::callback( version, NULL ) );
-	po.process_rc_file( "prj", "", NULL );
+	po.process_rc_file( "Skeleton", "", NULL );
 	if ( setup._logPath.is_empty() )
-		setup._logPath = "prj.log";
+		setup._logPath = "Skeleton.log";
 	int unknown = 0, nonOption = 0;
 	nonOption = po.process_command_line( argc_, argv_, &unknown );
 	if ( unknown > 0 ) {

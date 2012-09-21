@@ -1,10 +1,10 @@
 Begin3
-Title:		`prj'
+Title:		`Skeleton'
 Version:	@VERSION@
 Entered-date:	@ISODATE@
 Description:	does very much of very many different usefull things ... really.
 		@configure_input@
-		Please edit `prj'.lsm.in to fix the Keywords and
+		Please edit `Skeleton'.lsm.in to fix the Keywords and
 		Primary-site entries, add several more lines of
 		description here if appropriate, and to delete these
 		instructions.
@@ -12,8 +12,8 @@ Keywords:	[substitute your keywords here]
 Author: 	amok@codestation.org (Amok Berserker)
 Maintained-by:	amok@codestation.org (Amok Berserker)
 Primary-site:	metlab.unc.edu pub/Linux/apps/some/directory
-		31k `prj'-@VERSION@.tar.gz
-		500  `prj'.lsm
+		31k `Skeleton'-@VERSION@.tar.gz
+		500  `Skeleton'.lsm
 Alternate-site: 
 Original-site:  
 Platforms:      

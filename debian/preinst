@@ -1,6 +1,6 @@
 #!/bin/sh -e
 # Automatically added by dh_installdocs
-echo "Processing prj installation"
+echo "Processing Skeleton installation"
 # End automatically added section
 # Automatically added by dh_installmenu
 # End automatically added section

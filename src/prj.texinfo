@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 @c %**start of header
-@setfilename prj.info
+@setfilename Skeleton.info
 @settitle does very much of very many different usefull things ... really.
 @finalout
 @setchapternewpage odd
@@ -9,7 +9,7 @@
 @set VERSION 0.1.0
 
 @ifinfo
-This file documents the @code{prj} command which does very much of very many different usefull things ... really.
+This file documents the @code{Skeleton} command which does very much of very many different usefull things ... really.
 
 Copyright (C) 1978 Amok Berserker
 
@@ -32,9 +32,9 @@ by the Foundation.
 @end ifinfo
 
 @titlepage
-@title prj
+@title Skeleton
 @subtitle does very much of very many different usefull things ... really.
-@subtitle for prj Version @value{VERSION}
+@subtitle for Skeleton Version @value{VERSION}
 @author by Amok Berserker
 
 @page
@@ -56,17 +56,17 @@ by the Foundation.
 @node Top, Instructions, (dir), (dir)
 
 @ifinfo
-This file documents the @code{prj} command to does very much of very many different usefull things ... really..
+This file documents the @code{Skeleton} command to does very much of very many different usefull things ... really..
 @end ifinfo
 
 @c All the menus can be updated with the EMACS command
 @c texinfo-all-menus-update, which is normally bound to C-c C-u C-a.
 @menu
 * Instructions::                How to read this manual. 
-* Copying::                     How you can copy and share @code{prj}.
+* Copying::                     How you can copy and share @code{Skeleton}.
 * Overview::                    Preliminary information.
-* Sample::                      Sample output from @code{prj}.
-* Invoking prj::                How to run @code{prj}.
+* Sample::                      Sample output from @code{Skeleton}.
+* Invoking Skeleton::                How to run @code{Skeleton}.
 * Problems::                    Reporting bugs.
 * Concept Index::               Index of concepts.
 @end menu
@@ -116,35 +116,35 @@ Copyright:
 @cindex greetings
 @cindex overview
 
-The @code{prj} program produces a familiar, friendly greeting.
+The @code{Skeleton} program produces a familiar, friendly greeting.
 It allows nonprogrammers to use a classic computer science tool which
 would otherwise be unavailable to them. 
 
-@code{prj} was written by Amok Berserker.
+@code{Skeleton} was written by Amok Berserker.
 
-@node Sample, Invoking prj, Overview, Top
+@node Sample, Invoking Skeleton, Overview, Top
 @chapter Sample Output
 @cindex sample
 
-Here are some realistic examples of running @code{prj}.
+Here are some realistic examples of running @code{Skeleton}.
 
-This is the output of the command @samp{prj}:
+This is the output of the command @samp{Skeleton}:
 
 @example
 hello, world!
 @end example
 
-This is the output of the command @samp{prj --help}:
+This is the output of the command @samp{Skeleton --help}:
 
 @example
 does very much of very many different usefull things ... really.
-Usage: prj [options]
+Usage: Skeleton [options]
   -h, --help                    Print a summary of the options
   -v, --version                 Print the version number
 @end example
 
-@node Invoking prj, Problems, Sample, Top
-@chapter Invoking @code{prj}
+@node Invoking Skeleton, Problems, Sample, Top
+@chapter Invoking @code{Skeleton}
 @cindex invoking
 @cindex version
 @cindex options
@@ -152,13 +152,13 @@ Usage: prj [options]
 @cindex help
 @cindex getting help
 
-The format for running the @code{prj} program is:
+The format for running the @code{Skeleton} program is:
 
 @example
-prj @var{option} @dots{}
+Skeleton @var{option} @dots{}
 @end example
 
-@code{prj} supports the following options:
+@code{Skeleton} supports the following options:
 
 @table @samp
 @item --quiet
@@ -175,22 +175,22 @@ Print an informative help message describing the options and then exit.
 
 @item --version
 @itemx -v
-Print the version number of @code{prj} on the standard error output
+Print the version number of @code{Skeleton} on the standard error output
 and then exit.
 @end table
 
-@node Problems, Concept Index, Invoking prj, Top
+@node Problems, Concept Index, Invoking Skeleton, Top
 @chapter Reporting Bugs
 @cindex bugs
 @cindex problems
 
-If you find a bug in @code{prj}, please send electronic mail to
+If you find a bug in @code{Skeleton}, please send electronic mail to
 @w{@samp{amok@@codestation.org}}.  Include the version number, which you can
-find by running @w{@samp{prj --version}}.  Also include in your message the
+find by running @w{@samp{Skeleton --version}}.  Also include in your message the
 output that the program produced and the output you expected.@refill
 
 If you have other questions, comments or suggestions about
-@code{prj}, contact the author via electronic mail to
+@code{Skeleton}, contact the author via electronic mail to
 @w{@samp{amok@@codestation.org}}.  The author will try to help you out, although
 he may not have time to fix your problems.
 

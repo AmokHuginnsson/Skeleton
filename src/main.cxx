@@ -1,7 +1,7 @@
 /*
----            `prj' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski             ---
+---            `Skeleton' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski             ---
 
-	main.cxx - this file is integral part of `prj' project.
+	main.cxx - this file is integral part of `Skeleton' project.
 
   i.  You may not make any changes in Copyright information.
   ii. You must attach Copyright information to any part of every copy
@@ -38,9 +38,9 @@ using namespace yaal::hcore;
 using namespace yaal::hconsole;
 using namespace yaal::tools;
 using namespace yaal::tools::util;
-using namespace prj;
+using namespace Skeleton;
 
-namespace prj {
+namespace Skeleton {
 
 OSetup setup;
 

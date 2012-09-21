@@ -1,8 +1,8 @@
 #!/bin/sh -e
 # Automatically added by dh_installdocs
 if [ "$1" = "configure" ]; then
-	if [ -d /usr/doc -a ! -e /usr/doc/prj -a -d /usr/share/doc/prj ]; then
-		ln -sf ../share/doc/prj /usr/doc/prj
+	if [ -d /usr/doc -a ! -e /usr/doc/Skeleton -a -d /usr/share/doc/Skeleton ]; then
+		ln -sf ../share/doc/Skeleton /usr/doc/Skeleton
 	fi
 fi
 # End automatically added section

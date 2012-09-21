@@ -1,4 +1,4 @@
-%define name	`prj'
+%define name	`Skeleton'
 %define version @VERSION@
 %define release 1
 %define builddir $RPM_BUILD_DIR/%{name}-%{version}
@@ -27,7 +27,7 @@ Summary:		does very much of very many different usefull things ... really.
 %description
 connect ...
 @configure_input@
-Please edit `prj'.spec.in to add several more lines of description
+Please edit `Skeleton'.spec.in to add several more lines of description
 here if appropriate, and to delete these instructions.
 
 %prep

@@ -1,11 +1,11 @@
-Source: prj
+Source: Skeleton
 Section: non-free:net
 Priority: optional
 Maintainer: Amok Berserker <amok@codestation.org>
 Standards-Version: 3.1.1
 
-Package: prj
+Package: Skeleton
 Architecture: i386
 Depends: ${shlibs:Depends}
-Description: prj - absolutelly nesslesscary tool.
- prj - does very much of very many different usefull things ... really.
+Description: Skeleton - absolutelly nesslesscary tool.
+ Skeleton - does very much of very many different usefull things ... really.

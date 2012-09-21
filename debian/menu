@@ -1,2 +1,2 @@
-?package(prj):needs=text|vc section=Apps/Net\
-  title="prj" command="/usr/bin/prj"
+?package(Skeleton):needs=text|vc section=Apps/Net\
+  title="Skeleton" command="/usr/bin/Skeleton"
