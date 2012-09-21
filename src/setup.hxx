@@ -24,8 +24,8 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef PRJ_SETUP_HXX_INCLUDED
-#define PRJ_SETUP_HXX_INCLUDED 1
+#ifndef SKELETON_SETUP_HXX_INCLUDED
+#define SKELETON_SETUP_HXX_INCLUDED 1
 
 #include <libintl.h>
 #include <yaal/hcore/hstring.hxx>
@@ -53,5 +53,5 @@ extern OSetup setup;
 
 }
 
-#endif /* #ifndef PRJ_SETUP_HXX_INCLUDED */
+#endif /* #ifndef SKELETON_SETUP_HXX_INCLUDED */
 

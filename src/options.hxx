@@ -24,8 +24,8 @@ Copyright:
  FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 */
 
-#ifndef PRJ_OPTIONS_HXX_INCLUDED
-#define PRJ_OPTIONS_HXX_INCLUDED 1
+#ifndef SKELETON_OPTIONS_HXX_INCLUDED
+#define SKELETON_OPTIONS_HXX_INCLUDED 1
 
 namespace Skeleton {
 
@@ -33,5 +33,5 @@ int handle_program_options( int, char** );
 
 }
 
-#endif /* #ifndef PRJ_OPTIONS_HXX_INCLUDED */
+#endif /* #ifndef SKELETON_OPTIONS_HXX_INCLUDED */
 
