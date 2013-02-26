@@ -50,6 +50,7 @@ int main( int argc_, char* argv_[] ) {
 	M_PROLOG
 /* variables declarations for main loop: */
 	/* HConsole& cons = HConsole::get_instance(); */
+	int err( 0 );
 /* end. */
 	try {
 /* TO-DO: enter main loop code here */
@@ -66,6 +67,9 @@ int main( int argc_, char* argv_[] ) {
 			cons.leave_curses(); / * ending ncurses sesion * /
 */
 /* ... there is the place main loop ends. :OD-OT */
+	} catch ( int e ) {
+		err = e;
+		/* escape from main loop */
 	} catch ( ... ) {
 /*
 		if ( cons.is_enabled() )
@@ -74,7 +78,7 @@ int main( int argc_, char* argv_[] ) {
 		throw;
 	}
 	cerr << _( "Done" ) << endl;
-	return ( 0 );
+	return ( err );
 	M_FINAL
 }
 
