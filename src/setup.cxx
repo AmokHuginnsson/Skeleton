@@ -26,7 +26,7 @@ Copyright:
 
 #include <cstdio>
 
-#include <yaal/yaal.hxx>
+#include <yaal/tools/util.hxx>
 M_VCSID( "$Id: "__ID__" $" )
 #include "setup.hxx"
 
