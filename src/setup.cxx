@@ -36,13 +36,16 @@ namespace Skeleton {
 
 void OSetup::test_setup( void ) {
 	M_PROLOG
-	if ( _quiet && _verbose )
+	if ( _quiet && _verbose ) {
 		yaal::tools::util::failure( 1,
 				_( "quiet and verbose options are exclusive\n" ) );
-	if ( _verbose )
-		clog.reset( make_pointer<HFile>( stdout, false ) );
-	if ( _quiet )
+	}
+	if ( _verbose ) {
+		clog.reset( make_pointer<HFile>( stdout, HFile::OWNERSHIP::EXTERNAL ) );
+	}
+	if ( _quiet ) {
 		cout.reset();
+	}
 	return;
 	M_EPILOG
 }
