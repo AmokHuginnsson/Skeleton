@@ -1,12 +1,12 @@
 # $Id$
-# 
+#
 #---       `Skeleton' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski      ---
 #
-#	Makefile - this file is integral part of `Skeleton' project.
+# Makefile - this file is integral part of `Skeleton' project.
 #
-#	i.  You may not make any changes in Copyright information.
-#	ii. You must attach Copyright information to any part of every copy
-#	    of this software.
+# i.  You may not make any changes in Copyright information.
+# ii. You must attach Copyright information to any part of every copy
+#     of this software.
 #
 #Copyright:
 #
@@ -18,13 +18,13 @@
 #  4. If you want redistribute binary package you cannot demand any fees
 #     for this software.
 #     You cannot even demand cost of the carrier (CD for example).
-#  5. You cannot include it to any commercial enterprise (for example 
+#  5. You cannot include it to any commercial enterprise (for example
 #     as a free add-on to payed software or payed newspaper).
 # This program is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
 # FITNESS FOR A PARTICULAR PURPOSE. Use it at your own risk.
 
-$(foreach DIR,$(subst /, ,$(CURDIR)), $(eval $(eval DIR_ROOT_TEST=$(DIR_ROOT_TEST)/$(DIR)) $(if $(wildcard $(DIR_ROOT_TEST)/Makefile.mk.in),export DIR_ROOT ?= $(DIR_ROOT_TEST))))
+$(eval DIR_ROOT?=$(subst /Makefile.mk.in,,$(lastword $(realpath $(foreach DIR,$(subst /, ,$(CURDIR)), $(eval DIR_ROOT_TEST=$(DIR_ROOT_TEST)/$(DIR))$(DIR_ROOT_TEST)/Makefile.mk.in)))))
 PRJNAME        = Skeleton
 VERSION        = 0
 SUBVERSION     = 0
@@ -49,7 +49,7 @@ include $(DIR_ROOT)/_aux/mk/1_basic.mk
 LIBS           = hcore$(LIB_INFIX) tools$(LIB_INFIX) dbwrapper$(LIB_INFIX) \
 								 hconsole$(LIB_INFIX) hdata$(LIB_INFIX) hconsole$(LIB_INFIX) \
 								 dbwrapper$(LIB_INFIX) tools$(LIB_INFIX) hcore$(LIB_INFIX) \
-                 pthread
+								 pthread
 $(eval $(call NEW_TARGET,Skeleton,src,,@RDYNAMIC@))
 DO_@DO_TARGET@=1
 EXEC_NAME    = 1exec
