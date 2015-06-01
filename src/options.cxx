@@ -75,6 +75,7 @@ int handle_program_options( int argc_, char** argv_ ) {
 		.description( "path pointing to file for application logs" )
 		.recipient(	setup._logPath )
 		.argument_name( "path" )
+		.default_value( "Skeleton.log" )
 	)(
 		HProgramOptionsHandler::HOption()
 		.short_form( 'q' )
@@ -122,8 +123,6 @@ int handle_program_options( int argc_, char** argv_ ) {
 		.callback( call( &version ) )
 	);
 	po.process_rc_file( "Skeleton", "", set_variables );
-	if ( setup._logPath.is_empty() )
-		setup._logPath = "Skeleton.log";
 	int unknown( 0 );
 	int nonOption( po.process_command_line( argc_, argv_, &unknown ) );
 	if ( stop || ( unknown > 0 ) ) {
