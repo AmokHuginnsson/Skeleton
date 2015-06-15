@@ -1,7 +1,7 @@
 /*
 ---       `Skeleton' 0.0.0 (c) 1978 by Marcin 'Amok' Konarski         ---
 
-	options.cxx - this file is integral part of `Skeleton' project.
+  options.cxx - this file is integral part of `Skeleton' project.
 
   i.  You may not make any changes in Copyright information.
   ii. You must attach Copyright information to any part of every copy
@@ -28,13 +28,14 @@ Copyright:
 #include <cstdio>
 #include <cstring>
 
+#include "config.hxx"
+
 #include <yaal/hcore/hprogramoptionshandler.hxx>
 #include <yaal/hcore/hlog.hxx>
 #include <yaal/tools/util.hxx>
 M_VCSID( "$Id: " __ID__ " $" )
 
 #include "options.hxx"
-#include "config.hxx"
 #include "setup.hxx"
 
 using namespace yaal;
