@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CPackWiXPatch>
+	<CPackWiXFragment Id="#PRODUCTFEATURE">
+		<!-- ComponentRef Id="CM_SHORTCUT_EXTRA"/ -->
+		<ComponentRef Id="CM_ADD_TO_PATH"/>
+		<ComponentRef Id="CM_FILE_ASSOC"/>
+	</CPackWiXFragment>
+</CPackWiXPatch>

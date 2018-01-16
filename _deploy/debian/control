@@ -1,0 +1,16 @@
+Source: Skeleton
+Priority: extra
+Maintainer: Marcin Konarski <amok@codestation.org>
+Build-Depends: yaal-dev, debhelper (>= 8.0.0), g++ (>= 4.8), make (>= 3.81), autoconf, libtool
+Standards-Version: 3.9.2
+Section: utils
+Homepage: http://codestation.org/?h-action=menu-project&menu=submenu-project&page=&project=Skeleton
+Vcs-Git: https://codestation.org/repo/Skeleton.git
+
+Package: Skeleton
+Section: utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Skeleton - a shor description
+ Skeleton - a long description
+ Update all lines.

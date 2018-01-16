@@ -1,2 +1,0 @@
-?package(Skeleton):needs=text|vc section=Apps/Net\
-  title="Skeleton" command="/usr/bin/Skeleton"
