@@ -58,7 +58,7 @@ int main( int argc_, char* argv_[] ) {
 		throw;
 	}
 	cerr << _( "Done" ) << endl;
-	return ( err );
+	return err;
 	M_FINAL
 }
 
